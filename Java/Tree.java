@@ -23,7 +23,6 @@ public class Tree extends Constants{
             n.setRight(insertNode(n.getRight(),inf));
          }
       }
-      updateTreeBal(n);
       n = OP_Function(n);
       return(n);
    }
@@ -53,7 +52,7 @@ public class Tree extends Constants{
                n.setLeft(removeNode(n.getLeft(),inf));
             }
          }
-         updateTreeBal(n);
+
          n = OP_Function(n);
          return(n);
       }
@@ -128,26 +127,21 @@ public class Tree extends Constants{
    private Node OP_Function(Node n){
       switch(verifBal(n)){
          case NO_ACTION:{
-            System.out.println("\nNO ACTION");
             return(n);
          }
          case SIMPLE_RIGHT:{
-            System.out.println("\nSIMPLE RIGHT");
             n = rotR(n);
             return(n);
          }
          case SIMPLE_LEFT:{
-            System.out.println("\nSIMPLE LEFT");
             n = rotL(n);
             return(n);
          }
          case DOUBLE_LR:{
-            System.out.println("\nDOUBLE LEFT RIGHT");
             n = doubleLR(n);
             return(n);
          }
          case DOUBLE_RL:{
-            System.out.println("\nDOUBLE RIGHT LEFT");
             n = doubleRL(n);
             return(n);
          }
@@ -195,10 +189,12 @@ public class Tree extends Constants{
 
    public void addNode(int inf){
       setRoot(insertNode(root,inf));
+      updateTreeBal(root);
    }
 
    public void removeNode(int inf){
       setRoot(removeNode(root,inf));
+      updateTreeBal(root);
    }
 
    public void printTree(){
