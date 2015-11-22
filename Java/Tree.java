@@ -1,6 +1,10 @@
 public class Tree extends Constants{
    private Node root;
 
+   public Tree(){
+      root = null;
+   }
+
    private void setRoot(Node root){
       this.root = root;
    }
@@ -100,7 +104,7 @@ public class Tree extends Constants{
 
    private int verifBal(Node n){
       updateBal(n);
-      if(n.getBal() == -1 || n.getBal() == 0 || n.getBal() == 1){
+      if((n.getBal() == -1) || (n.getBal() == 0) || (n.getBal() == 1)){
          return(NO_ACTION);
       }else{
          if(sign(n.getBal()) == POSITIVE){
@@ -122,7 +126,8 @@ public class Tree extends Constants{
    private Node OP_Function(Node n){
       switch(verifBal(n)){
          case NO_ACTION:{
-            break;
+            System.out.println("\nNO ACTION");
+            return(n);
          }
          case SIMPLE_RIGHT:{
             System.out.println("\nSIMPLE RIGHT");
