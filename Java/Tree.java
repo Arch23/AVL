@@ -23,6 +23,7 @@ public class Tree extends Constants{
             n.setRight(insertNode(n.getRight(),inf));
          }
       }
+      n = OP_Function(n);
       return(n);
    }
 
@@ -51,6 +52,7 @@ public class Tree extends Constants{
                n.setLeft(removeNode(n.getLeft(),inf));
             }
          }
+         n = OP_Function(n);
          return(n);
       }
    }
@@ -60,7 +62,7 @@ public class Tree extends Constants{
          return;
       }else{
          printNodes(n.getLeft());
-         System.out.print(n.getInf()+" ");
+         System.out.print("\ninf: "+n.getInf()+"bal: "+n.getBal());
          printNodes(n.getRight());
       }
    }
