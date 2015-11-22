@@ -19,10 +19,11 @@ public class Tree extends Constants{
       }else{
          if(inf < n.getInf()){
             n.setLeft(insertNode(n.getLeft(),inf));
-         }else if(inf > n.getInf()){
+         }else{
             n.setRight(insertNode(n.getRight(),inf));
          }
       }
+      updateTreeBal(n);
       n = OP_Function(n);
       return(n);
    }
@@ -52,6 +53,7 @@ public class Tree extends Constants{
                n.setLeft(removeNode(n.getLeft(),inf));
             }
          }
+         updateTreeBal(n);
          n = OP_Function(n);
          return(n);
       }
@@ -154,17 +156,29 @@ public class Tree extends Constants{
    }
 
    private Node rotR(Node n){
-      Node aux = n.getLeft(), temp = n.getLeft().getRight();
-      n.setLeft(temp);
+      Node aux = n.getLeft();
+      Node temp = aux.getRight();
       aux.setRight(n);
+      n.setLeft(temp);
       return(aux);
    }
 
    private Node rotL(Node n){
-      Node aux = n.getRight(), temp = n.getRight().getLeft();
+      Node aux = n.getRight();
+      Node temp = aux.getLeft();
+      aux.setLeft(n);
       n.setRight(temp);
-      aux.setRight(n);
       return(aux);
+   }
+
+   private void updateTreeBal(Node n){
+      if(n == null){
+
+      }else{
+            updateTreeBal(n.getLeft());
+            updateTreeBal(n.getRight());
+            updateBal(n);
+      }
    }
 
    private Node doubleLR(Node n){
