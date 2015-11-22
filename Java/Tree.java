@@ -1,10 +1,6 @@
 public class Tree extends Constants{
    private Node root;
 
-   public Tree(int inf){
-      root = new Node(inf);
-   }
-
    private void setRoot(Node root){
       this.root = root;
    }
@@ -62,7 +58,7 @@ public class Tree extends Constants{
          return;
       }else{
          printNodes(n.getLeft());
-         System.out.print("\ninf: "+n.getInf()+"bal: "+n.getBal());
+         System.out.print("\ninf: "+n.getInf()+"\tbal: "+n.getBal());
          printNodes(n.getRight());
       }
    }

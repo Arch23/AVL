@@ -1,6 +1,7 @@
 public class Teste{
    public static void main(String[] args) {
-      Tree t = new Tree(5);
+      Tree t = new Tree();
+      t.addNode(5);
       t.addNode(4);
       t.addNode(7);
       t.addNode(9);
