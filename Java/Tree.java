@@ -125,18 +125,22 @@ public class Tree extends Constants{
             break;
          }
          case SIMPLE_RIGHT:{
+            System.out.println("\nSIMPLE RIGHT");
             n = rotR(n);
             return(n);
          }
          case SIMPLE_LEFT:{
+            System.out.println("\nSIMPLE LEFT");
             n = rotL(n);
             return(n);
          }
          case DOUBLE_LR:{
+            System.out.println("\nDOUBLE LEFT RIGHT");
             n = doubleLR(n);
             return(n);
          }
          case DOUBLE_RL:{
+            System.out.println("\nDOUBLE RIGHT LEFT");
             n = doubleRL(n);
             return(n);
          }
@@ -159,13 +163,13 @@ public class Tree extends Constants{
    }
 
    private Node doubleLR(Node n){
-      n = rotL(n);
+      n.setLeft(rotL(n.getLeft()));
       n = rotR(n);
       return(n);
    }
 
    private Node doubleRL(Node n){
-      n = rotL(n);
+      n.setRight(rotL(n.getRight()));
       n = rotR(n);
       return(n);
    }
