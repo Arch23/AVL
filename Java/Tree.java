@@ -68,7 +68,7 @@ public class Tree extends Constants{
    private int sign(int num){
       if(num >= 0){
          return(POSITIVE);
-      }else if(num < 0){
+      }else{
          return(NEGATIVE);
       }
    }
@@ -101,7 +101,7 @@ public class Tree extends Constants{
    }
 
    private int verifBal(Node n){
-      n.setBal(updateBal(n));
+      updateBal(n);
       if(n.getBal() == -1 || n.getBal() == 0 || n.getBal() == 1){
          return(NO_ACTION);
       }else{
@@ -121,28 +121,29 @@ public class Tree extends Constants{
       }
    }
 
-   private int OP_Function(Node n){
+   private Node OP_Function(Node n){
       switch(verifBal(n)){
          case NO_ACTION:{
             break;
          }
          case SIMPLE_RIGHT:{
             n = rotR(n);
-            break;
+            return(n);
          }
          case SIMPLE_LEFT:{
             n = rotL(n);
-            break;
+            return(n);
          }
          case DOUBLE_LR:{
             n = doubleLR(n);
-            break;
+            return(n);
          }
          case DOUBLE_RL:{
             n = doubleRL(n);
-            break;
+            return(n);
          }
       }
+      return(n);
    }
 
    private Node rotR(Node n){
