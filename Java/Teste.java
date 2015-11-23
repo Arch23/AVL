@@ -1,21 +1,13 @@
+import java.util.*;
+
 public class Teste{
    public static void main(String[] args) {
       Tree t = new Tree();
-      t.addNode(1);
-      t.printTree();
-      t.addNode(2);
-      t.printTree();
-      t.addNode(3);
-      t.printTree();
-      t.addNode(4);
-      t.printTree();
-      t.addNode(5);
-      t.printTree();
-      t.addNode(6);
-      t.printTree();
-      t.addNode(7);
-      t.printTree();
-      t.removeNode(4);
+      Random g = new Random();
+      for(int i=0;i<10000;i++){
+         t.addNode(g.nextInt(10000));
+         System.out.print("\n"+i+"\n");
+      }
       t.printTree();
    }
 }
