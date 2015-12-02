@@ -1,8 +1,17 @@
 public class Tree extends Constants{
    private Node root;
-
+   private int size;
    public Tree(){
       root = null;
+      size = 0;
+   }
+
+   public int getSize(){
+      return(size);
+   }
+
+   public boolean isEmpty(){
+      return(size == 0);
    }
 
    private void setRoot(Node root){
@@ -16,6 +25,7 @@ public class Tree extends Constants{
    private Node insertNode(Node n,int inf){
       if(n == null){
          n = new Node(inf);
+         size++;
       }else{
          if(inf < n.getInf()){
             n.setLeft(insertNode(n.getLeft(),inf));
@@ -37,10 +47,13 @@ public class Tree extends Constants{
             n.setRight(removeNode(n.getRight(),inf));
          }else{
             if(n.getLeft() == null && n.getRight() == null){
+               size--;
                return(null);
             }else if(n.getLeft() != null && n.getRight() == null){
+               size--;
                return(n.getLeft());
             }else if(n.getLeft() == null && n.getRight() != null){
+               size--;
                return(n.getRight());
             }else{
                Node aux = n.getRight();
@@ -130,22 +143,18 @@ public class Tree extends Constants{
             return(n);
          }
          case SIMPLE_RIGHT:{
-            System.out.println("\nSIMPLE_RIGHT");
             n = rotR(n);
             return(n);
          }
          case SIMPLE_LEFT:{
-            System.out.println("\nSIMPLE_LEFT");
             n = rotL(n);
             return(n);
          }
          case DOUBLE_LR:{
-            System.out.println("\nDOUBLE_LEFT_RIGHT");
             n = doubleLR(n);
             return(n);
          }
          case DOUBLE_RL:{
-            System.out.println("\nDOUBLE_RIGHT_LEFT");
             n = doubleRL(n);
             return(n);
          }
@@ -204,5 +213,6 @@ public class Tree extends Constants{
    public void printTree(){
       System.out.print("\n\n========= Arvore Binaria de Busca =========\n");
       printNodes(root);
+      System.out.print("\nSize: "+size);
    }
 }
