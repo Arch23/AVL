@@ -1,3 +1,0 @@
-Fazer um "TreeList" com capacidades de segurar objeto. 
-Utilizando um indíce interno, sem conhecimento do usuário, e funções de balanceamento todo tipo de dado poderia ser
-inserido na arvore.

@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Teste{
+public class Driver{
    public static void main(String[] args) {
       Tree t = new Tree();
       Random g = new Random();
